@@ -19,6 +19,7 @@ searchInputEl.addEventListener('blur', ()=>{
 
 
 const badgeEl = document.querySelector('header .badges');
+const toTopEl = document.querySelector('#to-top');
 
 // _.throttle() 함수가 한번에 너무 많이 실행되지 않도록 일정한 제한을 걸어줌
 // _.throttle(함수, 시간) -> lodash library
@@ -31,14 +32,29 @@ window.addEventListener('scroll', _.throttle(()=>{
       opacity: 0,
       display: 'none'
     });
+    // 버튼 보이기
+    gsap.to('#to-top', .2, {
+      x: 0
+    });
   } else {
     //배지 보이기
     gsap.to(badgeEl, .6, {
       opacity: 1,
       display: 'block'
     });
+    //버튼 숨기기
+    gsap.to('#to-top', .2, {
+      x: 100
+    });
   }
 }, 300));
+
+
+toTopEl.addEventListener('click', ()=>{
+  gsap.to(window, .7, {
+    scrollTo: 0
+  });
+});
 
 
 const fadeEls = document.querySelectorAll('.visual .fade-in');
