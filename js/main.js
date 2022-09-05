@@ -49,7 +49,7 @@ window.addEventListener('scroll', _.throttle(()=>{
   }
 }, 300));
 
-
+// top 버튼
 toTopEl.addEventListener('click', ()=>{
   gsap.to(window, .7, {
     scrollTo: 0
